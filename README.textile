@@ -98,3 +98,15 @@ h2. Menu Magic
 ** @description@
 ** @core@
 * Info files can list dependencies with @dependencies@
+* @menu_magic_menu@
+** The key 'magic' is the page path
+** The page callback is the function that will be called
+** The access callback is the function called when someone tries to view a page (permissions)
+** The file defines the file to include, a performance optimization
+** The type @MENU_LOCAL_TASK@ is for the tabs at the top of a node
+* Advanced Feature - @'user/%user/magic'@
+** Drupal automatically calls @user_load($wildcard)@ based on the special loader @%user@
+** You can also use @%node@ and @%file@
+** It looks for a @user_load@ or @node_load@ or any function you define hooked to @load@
+* Debug Tool - @dsm(func_get_args())@
+** Prints out the arguments passed to the function
