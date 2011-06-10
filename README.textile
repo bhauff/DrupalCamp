@@ -128,7 +128,7 @@ h2. Database Queries in Drupal 7
 
 h2. Databasics
 
-* http://drupal.org/developing/api/database
+* "Drupal 7 Database API":http://drupal.org/developing/api/database
 * Converting d6 queries to d7 http://upgrade.boombatower.com/tools/sql/inline
 * Nodes have full and teaser @$view_mode@
 * After you @->execute()@ you can call @->fetch()@ for one result or @->fetchAll()@ for all matches
