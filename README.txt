@@ -1,35 +1,37 @@
-h1. DrupalCamp Denver
+# DrupalCamp Denver - Developing Modules
 
-h1. DrupalCamp Denver - Developing Modules
-
-h2. First Module
+## First Module
 
 * Info file @demo.info@
 * Module file @demo.module@
 
-    name = demo
-    description = Just a simple demo module
-    core = 7.x
+```php
+name = demo
+description = Just a simple demo module
+core = 7.x
 
-    // Hooking in to nodeapi
-    function demo_nodeapi(&$node, $op_) {
-      global $user;
-      if ($op == 'view') {
-        if ($node->uid == $user->uid {
-          $node->title . ' [YOUR ARTICLE]';
-        }
-      }
+// Hooking in to nodeapi
+function demo_nodeapi(&$node, $op_) {
+  global $user;
+  if ($op == 'view') {
+    if ($node->uid == $user->uid {
+      $node->title . ' [YOUR ARTICLE]';
     }
+  }
+}
+```
 
 * Anytime someone says hook_something you replace hook with your module name
 * You might also involve an install file
 ** Where you hold logic that only runs during install or update
 
-    function tricky_install() {
-      drupal_set_message('You just installed Tricky!');
-    }
+```php
+function tricky_install() {
+  drupal_set_message('You just installed Tricky!');
+}
+```
 
-h2. Routing a Request
+## Routing a Request
 
 * The @.htaccess@ file routes all requests through @index.php@
 ** @index.php@ send the request through a bootstrap process and then looks for a @menu.inc@
@@ -42,7 +44,7 @@ h2. Routing a Request
 ** Essentially use hook_menu to map paths to functions
 ** The @menu@ system is the router
 
-h2. Hook System
+## Hook System
 
 * The hook system is an event listener pattern that utilizes specially named functions
 * Create hooks with @module_invoke_all('foo')@
@@ -51,19 +53,21 @@ h2. Hook System
 ** Namespace your hook with you module name to prevent collisions
 * Hook Node View Examples
 
-    // Appends [YOUR ARTICLE] to the node title if the logged in user is the owner of the node
-    function demo_node_view($node, $view_node, $language) {
-      global $user;
-      if ($node->uid == $user->uid) {
-        $node->title . ' [YOUR ARTICLE]';
-      }
-    }
+```php
+// Appends [YOUR ARTICLE] to the node title if the logged in user is the owner of the node
+function demo_node_view($node, $view_node, $language) {
+  global $user;
+  if ($node->uid == $user->uid) {
+    $node->title . ' [YOUR ARTICLE]';
+  }
+}
+```
 
 * The order of hooks getting called is based on weight and alphabetical order
 * Objects are implictely passed by reference in PHP 5.2+ which is what Drupal 7 uses
 * PHP tip: @var .= ' TEXT'@ will concatenate and update the var
 
-h2. Captain Module
+## Captain Module
 
 * Load in to @d7/sites/all/modules/captain@
 ** Don't load in to the @d7/modules@ folder as it is for core only
@@ -86,4 +90,3 @@ h2. Captain Module
 * @$user@ is the logged in user
 * @global@ pulls in a global variable to be used locally
 * @user_load@ will load a user object from the database 
-
