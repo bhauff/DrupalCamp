@@ -134,3 +134,16 @@ h2. Databasics
 * After you @->execute()@ you can call @->fetch()@ for one result or @->fetchAll()@ for all matches
 * Merge Queries @db_merge@ are the equivalent of insert or update
 
+h2. Forms
+
+* Write forms in Drupal, not static HTML
+* In the @$form[]@ array any key that does start with a @#@ is a form element
+* @drupal_map_assoc@ will turn an array of string in to an associative array with the string as the key and value
+** Caveat if you @t()@ the values of the array in a @drupal_map_assoc@ the keys would be translated also, which is likely wrong
+* You can use @form_name_form_validate@ to setup server side validations
+* You can use @form_name_form_submit@ to specify what happens when the form is going to be saved after validation
+* Use @hook_element_info@ to create a new type and then you could write validations that could always execute as a preprocess
+* Use @hook_form_alter@ to alter forms before they are displayed to the screen
+** You could use @hook_form_alter@ to add a validator to user signup form that requires a long password
+* The name of the function that defines the form is the form_id
+* You can @hook_form_id_alter@ to limit the scope of the hook to the specific form
