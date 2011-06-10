@@ -110,3 +110,27 @@ h2. Menu Magic
 ** It looks for a @user_load@ or @node_load@ or any function you define hooked to @load@
 * Debug Tool - @dsm(func_get_args())@
 ** Prints out the arguments passed to the function
+
+h2. Database Queries in Drupal 7
+
+* DB:TNG is a wrapper around PDO
+* Static queries take an associative array of the values to sub in to the query
+* Awesome Select Queries
+** Build an object up using function calls
+** @$select = db_select('node', 'n')->fields('n', array('nid'))->condition('promote', 1)->orderBy('sticky', 'DESC')->execute();@
+** @hook_query_alter@ can be used by modules to alter the built up query object
+** Calling @execute()@ is what returns results
+** @addTag@ is used to add tags that core looks for when querying
+* More Queries
+** @db_insert@
+** @db_update@
+** @db_deleted@
+
+h2. Databasics
+
+* http://drupal.org/developing/api/database
+* Converting d6 queries to d7 http://upgrade.boombatower.com/tools/sql/inline
+* Nodes have full and teaser @$view_mode@
+* After you @->execute()@ you can call @->fetch()@ for one result or @->fetchAll()@ for all matches
+* Merge Queries @db_merge@ are the equivalent of insert or update
+
