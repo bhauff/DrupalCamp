@@ -47,3 +47,16 @@ h2. Hook System
 ** Ask all modules if they implement @foo@ and then invoke it
 ** @yourmodule_foo()@ would use it
 ** Namespace your hook with you module name to prevent collisions
+* Hook Node View Examples
+
+    // Appends [YOUR ARTICLE] to the node title if the logged in user is the owner of the node
+    function demo_node_view($node, $view_node, $language) {
+      global $user;
+      if ($node->uid == $user->uid) {
+        $node->title . ' [YOUR ARTICLE]';
+      }
+    }
+
+* The order of hooks getting called is based on weight and alphabetical order
+* Objects are implictely passed by reference in PHP 5.2+ which is what Drupal 7 uses
+* PHP tip: @var .= ' TEXT'@ will concatenate and update the var
