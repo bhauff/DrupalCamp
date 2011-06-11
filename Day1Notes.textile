@@ -51,7 +51,13 @@ $page['content']['drupal_link'] = array(
 ** ...
 * You can attach CSS and JS elements to a renderable array, and they will only get loaded on those pages
 
-h2. Git
+h2. Git by Larry Garfield @crell
 
-
-
+* @git diff@ gives you the diff between the last snapshot and current working directory
+* @git add -p@ will go through each chunk of changes and ask if you want to stage just that chunk
+** Use @s@ to split combined chunks
+** @git diff --staged@ will show you what you are about to commit
+* You can login to drupal.org and go to 'Your Projects' to manage code
+* @git push -u origin master@
+** The @-u@ sets up a track for the remote so you can just push and pull
+* @git diff master > patch.patch@ will create a patch to provide to a maintainer
