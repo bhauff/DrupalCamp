@@ -1,0 +1,57 @@
+h1. Day 1 Notes
+
+h2. Render API
+
+* @$content@ is now a renderable array rather than a string
+** Based on the data and metadata Drupal will create the HTML from the renderable array
+* @hide@ temporarily hides the content passed to it
+* @print render($content)@ would then iterate over all of the content in the array and print it
+** You could then manually print out the hidden content on a different part of the page
+* Arrays are easier to alter, so this is a big step up from the @$content@ string in Drupal 6
+** @hook_page_alter@ hands you the content array and lets you make changes at the last moment
+** Complicated to do before in Drupal 6
+* For Module Developers
+** Declare output as renderable
+*** Use @hook_theme@ to make your module content renderable
+** Build a renderable array
+*** In the renderable array keys that start with a pound are a property
+*** Keys that don't start with a pound are content elements
+** Provide a default template file and render the output
+*** Something like @user-profile.tpl.php@
+
+<pre>
+$items = array(
+  t('A');
+  t('B');
+  t('C');
+)
+
+$page['content']['drupal'] = array(
+  '#theme' => 'item_list',
+  '#title' => t('List'),
+  '#items' => $items,
+}
+
+$page['content']['drupal_link'] = array(
+  '#type' => 'link',
+  '#title' => t('Link'),
+  '#href' => 'http://www.example.com',
+)
+</pre>
+
+* @drupal_render@
+** check #access and #printed
+** Check if cache version is available
+** load defaults if #type is set
+** call @#pre_render@ callbacks
+** call @#theme@ or concatenate children
+** call @#theme_wrappers@
+** call @#post_render@
+** handle @#attached@ CSS/JS
+** ...
+* You can attach CSS and JS elements to a renderable array, and they will only get loaded on those pages
+
+h2. Git
+
+
+
