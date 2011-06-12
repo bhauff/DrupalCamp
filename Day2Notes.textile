@@ -38,3 +38,14 @@ h2. Using Views Programmatically
 * Module "views_prog":http://drupal.org/sandbox/jyee/1180682
 ** @views_query_alter@
 ** @add_where_expression@
+
+h2. Workbench
+
+* Content in Drupal by default is published (live) or not published
+* Workbench allows a non-published draft
+* Drupal by default only allows permissions by content type
+* Workbench allows the site maintainer to assign access to pieces of content
+* Workbench shows you the content that you can create and edit, not all of the sites content
+* You can define a state machine of content stages and transitions
+** You can check that roles/permissions have been set correct
+* You get a needs reviewed tab for checking content before publishing
