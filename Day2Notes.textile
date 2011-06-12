@@ -1,0 +1,40 @@
+h1. Day 2 Notes
+
+h2. Using Views Programmatically
+
+* Views is the most installed module
+* Create lists of information in a friendly UI
+* Views created in the UI are stored in the database
+** File system backups are easier
+** Version control of views via files is easier than databases
+** Views in the database do not have revision control
+** How do you know who/how the view was changed
+** What caused the view to break
+* Views in code save database queries
+* Solutions
+** Chaos Tools Bulk Exporter
+* Admin -> Structure -> Views -> Add New
+** Give it a name
+** Save and Exit
+* Admin -> Structure -> Views -> Tools -> Bulk Exporter
+** Check the view to export and give it a name
+** A @info@ and a @module@ file are displayed
+** Install the module in @sites/all/modules@ according to the instructions
+** Turn on the module
+** Need to @revert@ the view which will delete it from the database and let the view in code not be overwritten
+* Edit View -> Advanced -> Theme Information
+** Copy the template in the theme, enable it, clear the cache
+* Life of a View
+** @views_get_view@ goes to database or code to pull up view
+** @hook_views_pre_view@ great place to modify arguments
+** @hook_views_pre_build@
+** @hook_views_query_substitutions@
+** @hook_view_query_alter@
+** @hook_views_post_build@
+** @hook_views_pre_execute@
+** @hook_query_alter@
+** @hook_query_TAG_alter@
+** @hook_views_post_execute@
+* Module "views_prog":http://drupal.org/sandbox/jyee/1180682
+** @views_query_alter@
+** @add_where_expression@

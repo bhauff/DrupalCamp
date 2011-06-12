@@ -61,3 +61,36 @@ h2. Git by Larry Garfield @crell
 * @git push -u origin master@
 ** The @-u@ sets up a track for the remote so you can just push and pull
 * @git diff master > patch.patch@ will create a patch to provide to a maintainer
+
+h2. Drush
+
+* 
+
+h2. Making Views That Rock!
+
+* Views can be backed up, and restored
+* Easy to change, manage, theme
+* What can be in a view
+** Nodes (Content)
+** Node Revisions (Content Revisions)
+** Users
+** Files
+** Taxonomy Terms
+** Module/Theme/Theme Engine
+* When to use
+** Show content in creative ways
+** Help users find what they are looking for
+** Create custom admin interfaces
+** Node and User References
+* Filter Criteria AND/OR
+* Paths can be created and overwritten
+* Any View Display can be embedded in the Header or Footer
+* Attributes
+* Contextual Filters
+* Use relationships to bring in data that is not available
+* Tools
+** @views_bulk_operations@
+** @node_clone@
+*** Can clone webforms
+** @editablefields@
+
